@@ -1,1 +1,2 @@
-console.log('ContrataListo cargado');
+
+console.log("ContrataListo cargado correctamente");
