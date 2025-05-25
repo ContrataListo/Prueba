@@ -1,3 +1,3 @@
-# Subscripción Demo
+# ContrataListo
 
-Este es un archivo de prueba para confirmar conexión con GitHub.
+Proyecto base para plataforma de empleo.
