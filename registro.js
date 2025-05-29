@@ -12,7 +12,7 @@ import {
 
 // 🔐 CONFIGURACIÓN FIREBASE
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
+  apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcosS66NxGWM", // ✅ Tu clave real copiada
   authDomain: "contratalisto-89564.firebaseapp.com",
   projectId: "contratalisto-89564",
   storageBucket: "contratalisto-89564.appspot.com",
@@ -27,7 +27,7 @@ const db = getFirestore(app);
 
 // 🧠 LÓGICA DEL REGISTRO
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
-  e.preventDefault(); // ✅ evita recarga
+  e.preventDefault();
 
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
@@ -51,6 +51,7 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
     });
 
     alert("Registro exitoso. ¡Bienvenido a ContrataListo!");
+    window.location.href = "index.html";
   } catch (error) {
     console.error("Error al registrar:", error);
     alert("Error: " + error.message);
