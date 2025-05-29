@@ -51,8 +51,6 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
     });
 
     alert("Registro exitoso. ¡Bienvenido a ContrataListo!");
-    // Redirecciona si quieres:
-    // window.location.href = "index.html";
   } catch (error) {
     console.error("Error al registrar:", error);
     alert("Error: " + error.message);
