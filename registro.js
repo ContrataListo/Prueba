@@ -1,18 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔐 CONFIGURACIÓN FIREBASE
+// CONFIGURACIÓN FIREBASE
 const firebaseConfig = {
-  apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcosS66NxGWM", // ✅ Tu clave real copiada
+  apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcoS66NxGWM",
   authDomain: "contratalisto-89564.firebaseapp.com",
   projectId: "contratalisto-89564",
   storageBucket: "contratalisto-89564.appspot.com",
@@ -20,21 +12,27 @@ const firebaseConfig = {
   appId: "1:583988141271:web:2a91412bffdf152aebe492"
 };
 
-// 🚀 Inicializa Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 🧠 LÓGICA DEL REGISTRO
+// Registro de Usuario
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
   const descripcion = document.getElementById("descripcion").value;
   const telefono = document.getElementById("telefono").value;
   const ciudad = document.getElementById("ciudad").value;
+
+  if (password !== confirmPassword) {
+    alert("Las contraseñas no coinciden.");
+    return;
+  }
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
