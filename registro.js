@@ -1,8 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// CONFIGURACIÓN FIREBASE
+// 🔐 Configuración Firebase con tu API KEY real
 const firebaseConfig = {
   apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcoS66NxGWM",
   authDomain: "contratalisto-89564.firebaseapp.com",
@@ -12,12 +20,12 @@ const firebaseConfig = {
   appId: "1:583988141271:web:2a91412bffdf152aebe492"
 };
 
-// Inicializa Firebase
+// 🚀 Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Registro de Usuario
+// 📩 Evento del formulario
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
