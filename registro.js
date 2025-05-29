@@ -9,12 +9,6 @@ import {
   setDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
 // 🔐 CONFIGURACIÓN FIREBASE
 const firebaseConfig = {
@@ -30,11 +24,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
 // 🧠 LÓGICA DEL REGISTRO
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
-  e.preventDefault(); // ✅ evita recarga de la página
+  e.preventDefault(); // ✅ evita recarga
 
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
@@ -42,30 +35,24 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
   const descripcion = document.getElementById("descripcion").value;
   const telefono = document.getElementById("telefono").value;
   const ciudad = document.getElementById("ciudad").value;
-  const hojavida = document.getElementById("hojavida").files[0];
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
 
-    // 🗂 Subir hoja de vida a Firebase Storage
-    const storageRef = ref(storage, hojas_de_vida/${uid}.pdf);
-    await uploadBytes(storageRef, hojavida);
-    const hojavidaURL = await getDownloadURL(storageRef);
-
-    // 📄 Guardar datos en Firestore
     await setDoc(doc(db, "usuarios", uid), {
       nombre,
       email,
       descripcion,
       telefono,
       ciudad,
-      hojavidaURL,
       tipo_cuenta: "trabajador",
       createdAt: serverTimestamp()
     });
 
     alert("Registro exitoso. ¡Bienvenido a ContrataListo!");
+    // Redirecciona si quieres:
+    // window.location.href = "index.html";
   } catch (error) {
     console.error("Error al registrar:", error);
     alert("Error: " + error.message);
