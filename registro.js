@@ -10,7 +10,7 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔐 Configuración Firebase con tu API KEY real
+// CONFIGURACIÓN FIREBASE
 const firebaseConfig = {
   apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcoS66NxGWM",
   authDomain: "contratalisto-89564.firebaseapp.com",
@@ -20,24 +20,22 @@ const firebaseConfig = {
   appId: "1:583988141271:web:2a91412bffdf152aebe492"
 };
 
-// 🚀 Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 📩 Evento del formulario
 document.getElementById("registroForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirmPassword").value;
+  const confirmarPassword = document.getElementById("confirmarPassword").value;
   const descripcion = document.getElementById("descripcion").value;
   const telefono = document.getElementById("telefono").value;
   const ciudad = document.getElementById("ciudad").value;
 
-  if (password !== confirmPassword) {
+  if (password !== confirmarPassword) {
     alert("Las contraseñas no coinciden.");
     return;
   }
@@ -57,7 +55,7 @@ document.getElementById("registroForm").addEventListener("submit", async (e) => 
     });
 
     alert("Registro exitoso. ¡Bienvenido a ContrataListo!");
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // Redirige si quieres
   } catch (error) {
     console.error("Error al registrar:", error);
     alert("Error: " + error.message);
