@@ -1,67 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel de Usuario - ContrataListo</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #0066cc;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    p {
-      color: #666;
-    }
-
-    .logout-btn {
-      background-color: #e60000;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      float: right;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel - ContrataListo</title>
 </head>
 <body>
-  <header>
-    <h1>ContrataListo</h1>
-    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
-  </header>
-
-  <main>
-    <h1>Bienvenido a tu panel</h1>
-    <p>Has iniciado sesión correctamente. Aquí verás tus opciones como trabajador o empresa.</p>
-  </main>
+  <h1>Bienvenido a tu panel</h1>
+  <button id="logoutBtn">Cerrar sesión</button>
 
   <script type="module">
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcoS66NxGWM",
@@ -75,17 +29,18 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
+    // Validar sesión activa
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
       }
     });
 
-    window.logout = () => {
+    document.getElementById("logoutBtn").addEventListener("click", () => {
       signOut(auth).then(() => {
         window.location.href = "login.html";
       });
-    };
+    });
   </script>
 </body>
 </html>

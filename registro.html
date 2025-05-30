@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>ContrataListo</title>
-    <link rel="stylesheet" href="style.css" />
-    <script type="module" src="firebase-config.js"></script>
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>ContrataListo</h1>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Usuario</title>
+</head>
+<body>
+  <h1>Registro de Usuario</h1>
+  <form id="registroForm">
+    <input type="text" id="nombre" placeholder="Nombre completo" required /><br />
+    <input type="email" id="email" placeholder="Correo electrónico" required /><br />
+    <input type="password" id="password" placeholder="Contraseña" required /><br />
+    <input type="password" id="confirmarPassword" placeholder="Confirmar contraseña" required /><br />
+    <input type="text" id="descripcion" placeholder="Descripción profesional" required /><br />
+    <input type="tel" id="telefono" placeholder="Teléfono" required /><br />
+    <input type="text" id="ciudad" placeholder="Ciudad" required /><br />
+    <button type="submit">Registrarse</button>
+  </form>
 
-    <main>
-      <section class="acciones">
-        <button onclick="window.location.href='registro.html'">Ver vacantes</button>
-        <h2>¿Eres una empresa?</h2>
-        <button onclick="window.location.href='empresa.html'">Publicar oferta</button>
-      </section>
-
-      <!-- Se eliminó completamente la sección pública de usuarios registrados -->
-    </main>
-
-    <footer>
-      <p>© 2025 ContrataListo. Todos los derechos reservados.</p>
-    </footer>
-  </body>
+  <script type="module" src="registro.js"></script>
+</body>
 </html>
