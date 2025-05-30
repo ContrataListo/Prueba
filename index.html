@@ -1,57 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ContrataListo</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Firebase configuración -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyARM2n0Z_RMw5N2twPQTpXGKcoS66NxGWM",
-      authDomain: "contratalisto-89564.firebaseapp.com",
-      projectId: "contratalisto-89564",
-      storageBucket: "contratalisto-89564.appspot.com",
-      messagingSenderId: "583988141271",
-      appId: "1:583988141271:web:2a91412bffd1f52aebe492"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    window.db = db; // Se expone para usar en script.js
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenido a ContrataListo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header>
-    <h1>ContrataListo</h1>
-    <p>Tu plataforma de empleo confiable</p>
-  </header>
-
-  <main>
-    <section class="intro">
-      <h2>¿Buscas trabajo?</h2>
-      <button onclick="mostrarAlerta()">Ver vacantes</button>
-    </section>
-
-    <section class="intro">
-      <h2>¿Eres una empresa?</h2>
-      <button onclick="mostrarAlerta()">Publicar oferta</button>
-    </section>
-
-    <!-- Contenedor para mostrar usuarios -->
-    <div id="usuarios"></div>
+  <main class="home-container">
+    <h1>Bienvenido a ContrataListo</h1>
+    <p>Conecta con tu futuro profesional</p>
+    
+    <div class="botones-inicio">
+      <button onclick="location.href='login.html'">Iniciar Sesión</button>
+      <button onclick="location.href='registro.html'">Registrarse</button>
+    </div>
   </main>
-
-  <footer>
-    <p>&copy; 2025 ContrataListo. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- Enlace a script.js -->
-  <script type="module" src="script.js"></script>
 </body>
 </html>
